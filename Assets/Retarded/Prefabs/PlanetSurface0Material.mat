@@ -1,0 +1,137 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: PlanetSurface0Material
+  m_Shader: {fileID: 4800000, guid: acb142158cbe6c34db5b5443aa0140ee, type: 3}
+  m_ShaderKeywords: []
+  m_CustomRenderQueue: -1
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+      data:
+        first:
+          name: _Texture1
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Texture2
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Texture3
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Texture4
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Normal1
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Normal2
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Normal3
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Normal4
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+    m_Floats:
+      data:
+        first:
+          name: _RimPower
+        second: .100000001
+      data:
+        first:
+          name: _Value1
+        second: .330000013
+      data:
+        first:
+          name: _Value2
+        second: .660000026
+      data:
+        first:
+          name: _Polarity
+        second: .800000012
+      data:
+        first:
+          name: _PolarStrenght
+        second: 1
+      data:
+        first:
+          name: _Brightness
+        second: 1
+    m_Colors:
+      data:
+        first:
+          name: _RimColor
+        second: {r: .522388101, g: .739484429, b: 1, a: 1}
+      data:
+        first:
+          name: _Color1
+        second: {r: .11689014, g: .338235319, b: .118416645, a: 1}
+      data:
+        first:
+          name: _Color2
+        second: {r: .926470578, g: .926470578, b: .926470578, a: 1}
+      data:
+        first:
+          name: _Color3
+        second: {r: .450980395, g: .717647076, b: .396078438, a: 1}
+      data:
+        first:
+          name: _Color4
+        second: {r: 1, g: .956862748, b: .843137264, a: 1}
+      data:
+        first:
+          name: _PolarColor
+        second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _UvScale
+        second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _Equator
+        second: {r: .200000003, g: 1, b: 0, a: 0}
+      data:
+        first:
+          name: _EquatorColor
+        second: {r: .784313738, g: .333333343, b: 0, a: 1}
+      data:
+        first:
+          name: _NormalUvScale
+        second: {r: 1, g: 1, b: 1, a: 1}
