@@ -2,14 +2,16 @@
 using System.Collections;
 
 public class ShotMover : MonoBehaviour {
-	public GameObject explosion;
-	public GameObject playerExplosion;
-	public float shotSpeed = 1.0f;
-	private float lifeTime = 0.0f;
+	public GameObject 	explosion;
+	public GameObject 	playerExplosion;
+	public float 		shotSpeed = 8.0f;
+	
+	private Vector3 	shotVelocity;
+	private float 		lifeTime = 0.0f;
 
 	// Use this for initialization
 	void Start () {
-	
+		shotVelocity = rigidbody.velocity + transform.forward * shotSpeed;
 	}
 	
 	// Update is called once per frame
@@ -18,7 +20,7 @@ public class ShotMover : MonoBehaviour {
 	}
 	
 	void FixedUpdate() {
-		rigidbody.velocity = transform.forward * shotSpeed;
+		rigidbody.velocity = shotVelocity;
 		
 		// Snap the object to the plane		
 //		transform.position.Set(transform.position.x, -5, transform.position.z);

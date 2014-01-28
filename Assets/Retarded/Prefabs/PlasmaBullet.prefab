@@ -29,7 +29,7 @@ GameObject:
   - 54: {fileID: 5400000}
   - 65: {fileID: 6500000}
   m_Layer: 0
-  m_Name: LaserShot
+  m_Name: PlasmaBullet
   m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -126,7 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosion: {fileID: 100012, guid: 991aaab8a27d64cd5a657ab7cac459fe, type: 2}
   playerExplosion: {fileID: 100008, guid: 5272bd598f0dd42009d857dfa7633db5, type: 2}
-  shotSpeed: 8
+  shotSpeed: 10
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -80,7 +80,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100004}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -9.47329823e-08, z: .819476426}
+  m_LocalPosition: {x: 0, y: -1.00491931e-07, z: .842987478}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400002}
@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   componentEnabled: 0
-  timeBetweenShots: .5
+  timeBetweenShots: .150000006
   shotObject: {fileID: 100002, guid: 20db55d973893a94292b5dccc24a096f, type: 2}
   muzzleObject: {fileID: 100004}
 --- !u!1001 &100100000

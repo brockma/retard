@@ -105,20 +105,29 @@ public class PlatformControl : MonoBehaviour {
 			rigidbody.velocity = new Vector3(0,0,0);
 			
 			foreach(Slot slot in nextLaunchDrone.GetComponentsInChildren<Slot>()) {
+				// Destroy the insert-component-here box from the slots
+				foreach (MeshRenderer slotrenderer in slot.GetComponents<MeshRenderer>()) {
+					Destroy(slotrenderer);
+				}
+				
+				// The slot is empty, so no need to do anything more
+				if (slot.transform.childCount == 0) {
+					continue;
+				}
+			
+				// Take the first grandchild of the slot, and make it the first direct child
+				// Destroy the original first child
 				Transform child = slot.transform.GetChild(0);
 				Transform childchild = child.GetChild(0);
 				child.parent = null;
 				DestroyObject(child.gameObject);
 				childchild.parent = slot.transform;
 				
+				// Connect the component rigidly into the main ship
+				// This way, for instance, the thrusters move the whole ship, not just the thruster
 				FixedJoint joint = childchild.gameObject.AddComponent<FixedJoint>();
 				joint.transform.parent = childchild;
 				joint.connectedBody = nextLaunchDrone.rigidbody;
-				
-				foreach (MeshRenderer slotrenderer in slot.GetComponents<MeshRenderer>()) {
-					Destroy(slotrenderer);
-//					slotrenderer.enabled = false;
-				}
 			}
 			
 			// Turn on all scripts in children
