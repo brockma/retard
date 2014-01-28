@@ -4,30 +4,29 @@ using System.Collections;
 public class PlatformControl : MonoBehaviour {
 
 	private GameObject	nextLaunchDrone;
-	public GUIText 		debugText1;
+	public 	GUIText 	debugText1;
 
 	private Quaternion 	originalRotation;
-	private GameModel gameModel;
+	private GameModel 	gameModel;
 	
-	public GUIText gameOverText;
-	public GUIText shipsLeftText;
+	public GUIText 		gameOverText;
+	public GUIText 		shipsLeftText;
 	
-	public GameObject droneSpawnPoint;
+	public GameObject 	droneSpawnPoint;
 	
 	// ENEMIES
 	public GameObject[] enemies;	
-	public Vector3 enemySpawnPosition;
-	private float startWait = 1.0f;
-	private float waveWait = 1.0f;
-	private float spawnWait = 0.5f;
-	private int enemyCount = 5;
+	public Vector3 		enemySpawnPosition;
+	private float 		startWait = 1.0f;
+	private float 		waveWait = 1.0f;
+	private float 		spawnWait = 0.5f;
+	private int 		enemyCount = 5;
 	
-	private float gameTime = 0.0f;
-	private int shipsLeft = 10;
+	private float 		gameTime = 0.0f;
+	private int 		shipsLeft = 10;
 	
-	private bool gameOver = false;
+	private bool 		gameOver = false;
 	
-
 	public void setGameOver() {
 		gameOver = true;
 	}
@@ -36,52 +35,33 @@ public class PlatformControl : MonoBehaviour {
 	void Start () {
 		gameModel = FindObjectOfType<GameModel>();
 		
-		Debug.Log("SCHEMAS IN GAME: " + gameModel.schemas.GetLength(0));
 		foreach(KnobShipController k in gameModel.schemas) {
 			k.gameObject.SetActive(false);
-			string text = "SCHEMA: ";
-			foreach (Slot slot in k.getSlots()) {
-				if (slot != null && slot.getSlotComponent() != null) {
-					text += " " + slot.getSlotComponent().componentType + " ";
-				} else {
-					text += " EMTPY ";
-				}
-			}
-			Debug.Log(text);
 		}
 		
-		StartCoroutine (SpawnWaves ());
+		StartCoroutine(SpawnWaves());
 	}
 	
-	IEnumerator SpawnWaves ()
-	{
+	IEnumerator SpawnWaves() {
 		yield return new WaitForSeconds (startWait);
-		while (true)
-		{
-			for (int i = 0; i < enemyCount; i++)
-			{
-				if (gameOver)
-				{
-					gameOverText.text = "Game Over";
+		while (gameOver == false) {
+			for (int i = 0; i < enemyCount; i++) {
+				if (gameOver) {
 					break;
 				}
 			
-				GameObject enemy = enemies [Random.Range (0, enemies.Length)];
-				Vector3 spawnPosition = new Vector3 (Random.Range (-enemySpawnPosition.x, enemySpawnPosition.x), enemySpawnPosition.y, enemySpawnPosition.z);
+				GameObject enemy = enemies[Random.Range(0, enemies.Length)];
+				Vector3 spawnPosition = new Vector3(Random.Range(-enemySpawnPosition.x, enemySpawnPosition.x), enemySpawnPosition.y, enemySpawnPosition.z);
 				Quaternion spawnRotation = Quaternion.identity;
 				GameObject newEnemy = Instantiate (enemy, spawnPosition, spawnRotation) as GameObject;
 				newEnemy.transform.LookAt(droneSpawnPoint.transform.position);
 				yield return new WaitForSeconds (spawnWait);
 			}
-			yield return new WaitForSeconds (waveWait);
+			yield return new WaitForSeconds(waveWait);
 
-			enemyCount++;
-
-			if (gameOver)
-			{
-				break;
-			}			
+			enemyCount++;			
 		}
+		gameOverText.text = "Game Over";
 	}
 	
 	// Update is called once per frame
@@ -110,7 +90,7 @@ public class PlatformControl : MonoBehaviour {
 			nextLaunchDrone.transform.LookAt(mouseWorldPoint);
 			nextLaunchDrone.transform.rotation = nextLaunchDrone.transform.rotation * originalRotation;
 		} else {
-			int schemaNum = Random.Range(0,3);
+			int schemaNum = Random.Range(0,4);
 			KnobShipController schema = gameModel.schemas[schemaNum];
 			nextLaunchDrone = Instantiate(schema.gameObject) as GameObject;
 			originalRotation = Quaternion.Euler(new Vector3(0, 180, 180));

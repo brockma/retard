@@ -24,13 +24,12 @@ public class ShotMover : MonoBehaviour {
 //		transform.position.Set(transform.position.x, -5, transform.position.z);
 	}
 	
-	void OnTriggerEnter (Collider other)
-	{
-		if(lifeTime < 1.0f) return;
+	void OnTriggerEnter(Collider other) {
+		if (lifeTime < 0.05f) {
+			return;
+		}
 	
-		Debug.Log("SHOT TRIGGER)");
-		if (other.tag == "Boundary")
-		{
+		if (other.tag == "Boundary") {
 			return;
 		}
 		

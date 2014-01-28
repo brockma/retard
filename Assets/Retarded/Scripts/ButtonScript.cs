@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class ButtonScript : MonoBehaviour {
+	public Renderer renderer2;
 	public Material buttonDownMaterial;
 	public Material buttonUpMaterial;
 	private bool buttonDown = false;
@@ -18,12 +19,12 @@ public class ButtonScript : MonoBehaviour {
 	}
 	
 	void OnMouseDown() {
-		renderer.material = buttonDownMaterial;
+		renderer2.material = buttonDownMaterial;
 		buttonDown = true;
 	}
 	
 	void OnMouseUp() {
-		renderer.material = buttonUpMaterial;
+		renderer2.material = buttonUpMaterial;
 		if(buttonDown) {
 			gameModel.StartGame();
 		}
@@ -31,7 +32,7 @@ public class ButtonScript : MonoBehaviour {
 	}
 	
 	void OnMouseExit() {
-		renderer.material = buttonUpMaterial;
+		renderer2.material = buttonUpMaterial;
 		buttonDown = false;
 	}
 }

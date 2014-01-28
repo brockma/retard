@@ -1,0 +1,15 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Retarded\Scripts\Projectile\HomingController.cs">
+    <Files>
+      <File FileName="Assets\Retarded\Scripts\Projectile\HomingController.cs" Line="4" Column="33" />
+      <File FileName="Assets\Retarded\Scripts\VisualTargetSelector.cs" Line="16" Column="40" />
+      <File FileName="Assets\Retarded\Scripts\PlatformControl.cs" Line="1" Column="1" />
+      <File FileName="Assets\Retarded\Scripts\Projectile\HomingController.cs" Line="134" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

@@ -1,22 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class HomingController : MonoBehaviour {
-	public GameObject wayPoint;
+public class HomingController : TargetReceiver {
 	public GameObject explosion;
 	public GameObject playerExplosion;
 	
-	public float targetConeWidth = 30;
-	public float thrustMaxPower = 3f;
-	public float thrustMaxSeconds = 1.0f;
-	public float turnMaxPower = 3f;
-	public float turnMaxSeconds = 1.0f;
+	public float	armingDelay = 0.5f;
+	public float 	targetConeWidth = 30;
+	public float 	thrustMaxPower = 3f;
+	public float 	thrustMaxSeconds = 1.0f;
+	public float 	turnMaxPower = 3f;
+	public float 	turnMaxSeconds = 1.0f;
 
-
-	private float thrustMaxSpeed;
-	private float turnMaxSpeed;
-	private float lifeTime = 0.0f;	
-	public float maxLifeTime = 7.0f;
+	private float 	thrustMaxSpeed;
+	private float 	turnMaxSpeed;
+	private float 	lifeTime = 0.0f;	
+	public float 	maxLifeTime = 7.0f;
 	
 		
 //	private float nextFire;
@@ -43,9 +42,10 @@ public class HomingController : MonoBehaviour {
 		// Snap the object to the plane		
 //		transform.position.Set(transform.position.x, -5, transform.position.z);
 		
-		if (wayPoint == null) {
+		if (currentTarget == null) {
 			// No target set. Just accelerate forward
-			rigidbody.AddRelativeForce(Vector3.forward * thrustMaxPower);
+			// TODO: This might result in the rocket just spinning around
+			rigidbody.AddRelativeForce(transform.forward * thrustMaxPower);
 			return;
 		}
 	
@@ -103,26 +103,29 @@ public class HomingController : MonoBehaviour {
 	}
 
 	Vector3 getTargetVector() {
-		return wayPoint.transform.position - rigidbody.position;
+		return currentTarget.transform.position - rigidbody.position;
 	}
 	
-	void OnTriggerEnter (Collider other)
-	{
-		if(lifeTime < 1.0f) return;
-		
-		Debug.Log("MISSILE TRIGGER)");
-		if (other.tag == "Boundary")
-		{
+	void OnTriggerEnter (Collider other) {
+		if (lifeTime < armingDelay) {
 			return;
 		}
 		
-		if (other.tag == "Player") {
-			if(playerExplosion != null) Instantiate(playerExplosion, other.transform.position, other.transform.rotation);
-		} else if(other.tag == "Enemy") {
-			if(explosion != null) Instantiate(explosion, other.transform.position, other.transform.rotation);
+		if (other.tag == "Boundary") {
+			Destroy (gameObject);
+			return;
 		}
 		
 		if(other.tag == "Enemy" || other.tag == "Player") {
+			if (other.tag == "Player") {
+				if (playerExplosion != null) {
+					Instantiate(playerExplosion, other.transform.position, other.transform.rotation);
+				}
+			} else if(other.tag == "Enemy") {
+				if (explosion != null) {
+					Instantiate(explosion, other.transform.position, other.transform.rotation);
+				}
+			}
 			Destroy (other.gameObject);
 			Destroy (gameObject);
 		}

@@ -1,21 +1,24 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MissileTargetSelection : MonoBehaviour {
-	
-	public HomingController homingController;
-	public float			targetConeWidth = 30;
+public class VisualTargetSelector : MonoBehaviour {
+	public TargetReceiver 		targetReceiver;
+	public float				targetConeWidth = 160;
 	
 	// Use this for initialization
 	void Start () {
-	
+		if (targetReceiver == null) {
+			Debug.LogWarning("Target selector not set");
+			return;
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (homingController == null) {
+		if (targetReceiver == null) {
 			return;
 		}
+		
 		GameObject [] enemies = GameObject.FindGameObjectsWithTag("Enemy");
 		GameObject [] friends = GameObject.FindGameObjectsWithTag("Player");
 		
@@ -30,7 +33,7 @@ public class MissileTargetSelection : MonoBehaviour {
 			closestTargetInFront = obj;
 		}
 		if (closestTargetInFront != null) {
-			homingController.wayPoint = closestTargetInFront;
+			targetReceiver.setTarget(closestTargetInFront);
 		}
 	}
 	
