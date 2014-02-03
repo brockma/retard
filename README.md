@@ -1,4 +1,4 @@
 retarded
 ========
 
-Retarded Automation - Global Game Jam 2014
+Retard Automation - Global Game Jam 2014
